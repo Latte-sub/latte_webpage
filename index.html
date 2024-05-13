@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Latte: Latent Diffusion Transformer for Video Generation.">
+  <meta name="keywords" content="Diffusion, Video Generation, Transformers">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Latte: Latent Diffusion Transformer for Video Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+      <!--    <div class="container is-max-desktop">-->
+            <div class="container is-fullhd">
+            <div class="columns is-centered">
+              <div class="column has-text-centered">
+                <h1 class="title is-1 publication-title">Latte: Latent Diffusion Transformer for Video Generation</h1>
+                <div class="is-size-5 publication-authors">
+                    
+                    <span class="author-block">
+                    Anonymous Author(s)
+                    <span class="author-block">
+                  <div class="is-size-6 publication-authors">            
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+		<center>
+      		<img src="static/images/architecture.svg" title="" style="max-width:80%;vertical-align:top"/>
+		</center>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose a novel Latent Diffusion Transformer, namely Latte, for video generation. Latte first extracts spatio-temporal tokens from input videos and then adopts a series of Transformer blocks to model video distribution in the latent space. In order to model a substantial number of tokens extracted from videos, four efficient variants are introduced from the perspective of decomposing the spatial and temporal dimensions of input videos. To improve the quality of generated videos, we determine the best practices of Latte through rigorous experimental analysis, including video clip patch embedding, model variants, timestep-class information injection, temporal positional embedding, and learning strategies. Our comprehensive evaluation demonstrates that Latte achieves state-of-the-art performance across four standard video generation datasets, i.e., FaceForensics, SkyTimelapse, UCF101, and Taichi-HD. In addition, we extend Latte to text-to-video generation (T2V) task, where Latte achieves comparable results compared to recent T2V models. We strongly believe that Latte provides valuable insights for future research on incorporating Transformers into diffusion models for video generation.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+  
+      <!-- Animation. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Results</h2>
+  
+          <!-- Customed Videos. -->
+          <h3 class="title is-4">Unconditional generation</h3>
+          <div class="content has-text-justified">
+            <p>
+              Unconditional video generation on the Taichi-HD (256 x 256), FaceForensics (256 x 256) and SkyTimelapse (256 x 256) datasets. 
+            </p>
+          </div>
+          <div class="content has-text-centered">
+  
+          <div class="video-container">
+              <!-- First video -->
+              <div class="video">
+                <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/taichi-grid.mp4"
+                          type="video/mp4">
+                </video>
+                <div class="video-description">
+                  <p>Taichi-HD</p>
+                </div>
+              </div>
+          
+              <!-- Second video -->
+              <div class="video">
+                <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/ffs-grid.mp4"
+                          type="video/mp4">
+                </video>
+                <div class="video-description">
+                  <p>FaceForensics </p>
+                </div>
+              </div>
+
+            <!-- Third video -->
+            <div class="video">
+                <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/sky-grid.mp4"
+                          type="video/mp4">
+                </video>
+                <div class="video-description">
+                  <p>SkyTimelapse</p>
+                </div>
+              </div>
+          </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+  
+      <!-- Animation. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <!-- <h2 class="title is-3">Results</h2> -->
+  
+          <!-- Customed Videos. -->
+          <h3 class="title is-4">Conditional generation based on classes</h3>
+          <div class="content has-text-justified">
+            <p>
+              Given the class, Latte is able to generate the desired videos. Results are shown on the UCF101 (256 x 256) datasets.  
+            </p>
+          </div>
+          <div class="content has-text-centered">
+  
+          <div class="video-container">
+              <!-- First video -->
+              <div class="video">
+                <video poster="" id="toby" autoplay controls muted loop playsinline width="50%">
+                  <source src="./static/videos/ucf-grid.mp4"
+                          type="video/mp4">
+                </video>
+                <div class="video-description">
+                  <p>UCF101</p>
+                </div>
+              </div>
+          </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- <h2 class="title is-3">Results</h2> -->
+
+        <!-- Customed Videos. -->
+        <h3 class="title is-4">Conditional generation based on prompts</h3>
+        <div class="content has-text-justified">
+            <p>
+              Results are shown by using Latte to generate disered videos.
+            </p>
+          </div>
+        <div class="content has-text-centered">
+
+        <div class="video-container">
+            <!-- First video -->
+            <div class="video">
+              <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/t2v-1-grid.mp4"
+                        type="video/mp4">
+              </video>
+              <div class="video-description">
+                <p>Yellow and black tropical fish dart through the sea.</p>
+              </div>
+            </div>
+        
+            <!-- Second video -->
+            <div class="video">
+              <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/t2v-0-grid.mp4"
+                        type="video/mp4">
+              </video>
+              <div class="video-description">
+                <p>An epic tornado attacking above aglowing city at night.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="video-container">
+          <!-- First video -->
+          <div class="video">
+            <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/t2v-2-grid.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="video-description">
+              <p>Slow pan upward of blazing oak fire in an indoor fireplace.</p>
+            </div>
+          </div>
+      
+          <!-- Second video -->
+          <div class="video">
+            <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/t2v-3-grid.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="video-description">
+              <p>a cat wearing sunglasses and working as a lifeguard at pool.</p>
+            </div>
+          </div>
+      </div>
+      <div class="video-container">
+        <!-- First video -->
+        <div class="video">
+          <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/t2v-4-grid.mp4"
+                    type="video/mp4">
+          </video>
+          <div class="video-description">
+            <p>Sunset over the sea.</p>
+          </div>
+        </div>
+    
+        <!-- Second video -->
+        <div class="video">
+          <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/t2v-5-grid.mp4"
+                    type="video/mp4">
+          </video>
+          <div class="video-description">
+            <p>A dog in astronaut suit and sunglasses floating in space.</p>
+          </div>
+        </div>
+      </div>
+        </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+  
+      <!-- Animation. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+  
+          <!-- Customed Videos. -->
+          <h3 class="title is-4">Compare with other state-of-the-art</h3>
+          <div class="content has-text-justified">
+            <p>
+              Visual comparison with other state-of-the-art on UCF101, Taichi-HD, FaceForensics and SkyTimelapse datasets, respectively.
+            </p>
+          </div>
+
+            <h3 class="title is-5">UCF101</h3>
+            <!-- <div class="content has-text-centered"> -->
+            <div class="content has-text-centered">
+            <div class="video-container">
+                <!-- First video -->
+                <div class="video">
+                  <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                    <source src="./static/videos/ucf-pvdm-grid.mp4"
+                            type="video/mp4">
+                  </video>
+                  <div class="video-description">
+                    <p>PVDM</p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="video-container">
+                <!-- First video -->
+                <div class="video">
+                  <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                    <source src="./static/videos/ucf-ours-grid.mp4"
+                            type="video/mp4">
+                  </video>
+                  <div class="video-description">
+                    <p>Ours</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+            
+            <!-- # taichi -->
+            <h3 class="title is-5">Taichi-HD</h3>
+            <div class="content has-text-centered">
+            <div class="video-container">
+                <!-- First video -->
+                <div class="video">
+                  <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                    <source src="./static/videos/taichi-digan-grid.mp4"
+                            type="video/mp4">
+                  </video>
+                  <div class="video-description">
+                    <p>DIGAN</p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="video-container">
+                <!-- First video -->
+                <div class="video">
+                  <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                    <source src="./static/videos/lvdm-taichi-grid.mp4"
+                            type="video/mp4">
+                  </video>
+                  <div class="video-description">
+                    <p>LVDM</p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="video-container">
+                <!-- First video -->
+                <div class="video">
+                  <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                    <source src="./static/videos/taichi-ours-grid.mp4"
+                            type="video/mp4">
+                  </video>
+                  <div class="video-description">
+                    <p>Ours</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+            
+            <!-- # ffs -->
+            <h3 class="title is-5">FaceForensics</h3>
+            <div class="content has-text-centered">
+                <div class="video-container">
+                    <!-- First video -->
+                    <div class="video">
+                      <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                        <source src="./static/videos/ffs-stylegan-v-grid.mp4"
+                                type="video/mp4">
+                      </video>
+                      <div class="video-description">
+                        <p>StyleGAN-V</p>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="video-container">
+                    <!-- First video -->
+                    <div class="video">
+                      <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                        <source src="./static/videos/ffs-pvdm-grid.mp4"
+                                type="video/mp4">
+                      </video>
+                      <div class="video-description">
+                        <p>PVDM</p>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="video-container">
+                    <!-- First video -->
+                    <div class="video">
+                      <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                        <source src="./static/videos/ffs-ours-grid.mp4"
+                                type="video/mp4">
+                      </video>
+                      <div class="video-description">
+                        <p>Ours</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+    
+            <h3 class="title is-5">SkyTimelapse</h3>
+            <div class="content has-text-centered">
+                <div class="video-container">
+                    <!-- First video -->
+                    <div class="video">
+                      <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                        <source src="./static/videos/sky-stylegan-v-grid.mp4"
+                                type="video/mp4">
+                      </video>
+                      <div class="video-description">
+                        <p>StyleGAN-V</p>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="video-container">
+                    <!-- First video -->
+                    <div class="video">
+                      <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                        <source src="./static/videos/sky-pvdm-grid.mp4"
+                                type="video/mp4">
+                      </video>
+                      <div class="video-description">
+                        <p>PVDM</p>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="video-container">
+                    <!-- First video -->
+                    <div class="video">
+                      <video poster="" id="toby" autoplay controls muted loop playsinline width="95%">
+                        <source src="./static/videos/sky-ours-grid.mp4"
+                                type="video/mp4">
+                      </video>
+                      <div class="video-description">
+                        <p>Ours</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+</section>
+
+</body>
+</html>
